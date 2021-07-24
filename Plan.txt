@@ -1,0 +1,21 @@
+1. You may find that the required items are not in stock - Unavailable Filter addition. 
+2. How can you use technology to ensure inventory is managed well so your favourite products are in stock? - Fav product chooser in Add Product
+3. Product Category Dropdown in Add product
+4. Add Warehouse Option - Name, Location, Product ID ( with quantity )  
+5. Products management between warehouse and store. Showing the product and number and popup to send the product
+6. Multiple Warehouses and check the product availabilty and find the nearest route for delivery.
+7. APIs for Route preparation from avaibale warehouses
+8. Consider stores as warehouses for delivery. 
+
+Tasks : 
+
+1. Authentication
+2. Unavailability Filter in Dashboard
+3. Favourite option in Product and in Dashboard (along with Favourite Filter)
+4. Product Category Dropdown in Add Product and in Dashboard (along with Product Category Filter)
+5. Search bar on the navbar (Right Top)
+6. View Store page. 
+7. Add Warehouse & View Warehouses. (Multiple)
+8. In warehouse & store, Product filter availability check.
+9. Thinking of ways for Route preparation ( for Warehouses & Stores ) - APIs (maps) or something more.
+10. UI preparation
