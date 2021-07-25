@@ -27,6 +27,7 @@ class Dashboard extends Component {
 
     componentWillReceiveProps() {
         setTimeout(() => {
+            console.log("Yes1")
             if (!this.props.application || !this.props.application.user) {
                 browserHistory.push('/login');
             }

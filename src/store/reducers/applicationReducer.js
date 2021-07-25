@@ -4,7 +4,14 @@ const initial_state = {};
 export function applicationReducer(state = initial_state, action) {
   switch (action.type) {
     case ActionTypes.LoadInitialState: {
-      return state;
+      if (localStorage.getItem("inventoryUserData")) {
+        console.log("Yes2")
+        var newState = Object.assign({}, state, { user: JSON.parse(localStorage.getItem("inventoryUserData")) });
+        state = newState;
+        return state;
+      }
+      else
+        return state;
     }
     case ActionTypes.LoginRequestSuccess: {
       var newState = Object.assign({}, state, { user: action.data });
@@ -27,14 +34,24 @@ export function applicationReducer(state = initial_state, action) {
       return state;
     }
     case ActionTypes.logOutRequestSuccess: {
+      if (localStorage.getItem("inventoryUserData")) {
+        localStorage.removeItem("inventoryUserData");
+      }
       var newState = Object.assign({});
       state = newState;
       return state;
     }
     case ActionTypes.loadUserRequest: {
-      var newState = Object.assign({}, state);
-      state = newState;
-      return state;
+      if (localStorage.getItem("inventoryUserData")) {
+        var newState = Object.assign({}, state, { user: JSON.parse(localStorage.getItem("inventoryUserData")) });
+        state = newState;
+        return state;
+      }
+      else {
+        var newState = Object.assign({}, state);
+        state = newState;
+        return state;
+      }
     }
     case ActionTypes.addProductRequestSuccess: {
       var newState = Object.assign({}, state);

@@ -22,7 +22,7 @@ class LoadSales extends Component {
         oldDate.setHours("23");
         oldDate.setMinutes("59");
         date.setDate(date.getDate() - 7);
-        this.state = { openDilog: false, singleRequest: {}, timeDelay: date, timeDelayEnd: oldDate };
+        this.state = { openDilog: false, singleRequest: {}, timeDelay: date, timeDelayEnd: oldDate, isCheck:false };
         this.requiredAvaialble = [
             "All",
             "Availabile"
@@ -30,7 +30,6 @@ class LoadSales extends Component {
         this.graphData = [];
         this.graphNextValues = [];
         this.graphOriginalValues = [];
-
         //     this.data = [
         //       {name: 'Page A', uv: 4000, pv: 2400, amt: 2400},
         //       {name: 'Page B', uv: 3000, pv: 1398, amt: 2210},
@@ -47,8 +46,53 @@ class LoadSales extends Component {
         this.props.loadSalesRequest(this.props.application.user);
     }
 
-    componentWillReceiveProps() {
+    componentDidUpdate(prevProps) {
+        if(prevProps.application.user !== this.props.application.user) {
+            this.props.loadSalesRequest(this.props.application.user);
+            setTimeout(() => {
+                this.graphUpdate();
+            }, 150)
+        }
+            
+    }
+
+    graphUpdate = () => {
         var that = this;
+        console.log("Yes3", this.props.application.allSales)
+        if (this.props.application.allSales && this.props.application.allSales.length > 0) {
+            this.graphData = [];
+            this.props.application.allSales.forEach((data, index) => {
+                var innerData = [];
+                innerData.push(index + 1);
+                innerData.push(data.totalAmount);
+                this.graphData.push(innerData)
+            })
+            var result = regression('linearThroughOrigin', this.graphData);
+            var slope = result.equation[0];
+            var yIntercept = result.equation[1];
+            
+
+            this.graphOriginalValues = [];
+            this.graphData.forEach((innetrDataAgain, index) => {
+                that.graphOriginalValues.push({ name: index+1, "uv": innetrDataAgain[1] })
+            })
+
+
+            this.graphNextValues = [];
+            this.graphData.forEach((innetrDataAgain, index) => {
+                that.graphNextValues.push({ name: index+1, "uv": (slope * (index + 1)) })
+            })
+            var totalLength = that.graphNextValues.length;
+            for (var k = 0; k < 3; k++) {
+                that.graphNextValues.push({ name: (totalLength + k+1), "uv": (slope * (totalLength + k+1)) })
+            }
+
+            this.setState({ isCheck: !this.state.isCheck })
+        }
+    }
+
+
+    componentWillReceiveProps() {
         setTimeout(() => {
             if (!this.props.application || !this.props.application.user) {
                 browserHistory.push('/login');
@@ -60,34 +104,7 @@ class LoadSales extends Component {
                 browserHistory.push('/login');
             }
 
-            if (this.props.application.allSales && this.props.application.allSales.length > 0) {
-                this.graphData = [];
-                this.props.application.allSales.forEach((data, index) => {
-                    var innerData = [];
-                    innerData.push(index + 1);
-                    innerData.push(data.totalAmount);
-                    this.graphData.push(innerData)
-                })
-                var result = regression('linearThroughOrigin', this.graphData);
-                var slope = result.equation[0];
-                var yIntercept = result.equation[1];
-                
-
-                this.graphOriginalValues = [];
-                this.graphData.forEach((innetrDataAgain, index) => {
-                    that.graphOriginalValues.push({ name: index+1, "uv": innetrDataAgain[1] })
-                })
-
-
-                this.graphNextValues = [];
-                this.graphData.forEach((innetrDataAgain, index) => {
-                    that.graphNextValues.push({ name: index+1, "uv": (slope * (index + 1)) })
-                })
-                var totalLength = that.graphNextValues.length;
-                for (var k = 0; k < 3; k++) {
-                    that.graphNextValues.push({ name: (totalLength + k+1), "uv": (slope * (totalLength + k+1)) })
-                }
-            }
+            this.graphUpdate();
         }, 150)
     }
 
@@ -119,6 +136,7 @@ class LoadSales extends Component {
 
 
     render() {
+        console.log(this.graphNextValues)
         const style = {
             minheight: 100,
             width: 900,

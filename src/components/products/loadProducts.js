@@ -22,7 +22,11 @@ class LoadProducts extends Component {
     }
 
     componentDidMount() {
-        this.props.loadUserRequest();
+        this.props.loadUserRequest()
+        this.props.loadProductsRequest(this.props.application.user);
+    }
+
+    componentDidUpdate(){
         this.props.loadProductsRequest(this.props.application.user);
     }
 

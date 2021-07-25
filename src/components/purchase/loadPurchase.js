@@ -31,6 +31,10 @@ class LoadPurchase extends Component {
         this.props.loadPurchaseRequest(this.props.application.user);
     }
 
+    componentDidUpdate(){
+        this.props.loadPurchaseRequest(this.props.application.user);
+    }
+
     componentWillReceiveProps() {
         setTimeout(() => {
             if (!this.props.application || !this.props.application.user) {

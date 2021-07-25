@@ -4,6 +4,7 @@ import * as fbConfigs from '../../configs/dbconfigs';
 export function loadProductsRequest(loadProductsData) {
     return dispatch => {
         dispatch(LoadProductsRequest());
+        console.log(loadProductsData)
         if(loadProductsData){
             return fbConfigs.database.ref('/products').orderByChild('userEmail').equalTo(loadProductsData.email).once('value', snap => {
                 const todo = [];

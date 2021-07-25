@@ -24,6 +24,10 @@ class UpdateProduct extends Component {
         this.props.loadProductsRequest(this.props.application.user);
     }
 
+    componentDidUpdate(){
+        this.props.loadProductsRequest(this.props.application.user);
+    }
+
     componentWillReceiveProps() {
         setTimeout(() => {
             if (!this.props.application || !this.props.application.user) {
