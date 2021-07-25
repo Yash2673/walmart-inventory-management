@@ -9,13 +9,18 @@
 
 Tasks : 
 
-1. Authentication
-2. Unavailability Filter in Dashboard
-3. Favourite option in Product and in Dashboard (along with Favourite Filter)
-4. Product Category Dropdown in Add Product and in Dashboard (along with Product Category Filter)
-5. Search bar on the navbar (Right Top)
-6. View Store page. 
-7. Add Warehouse & View Warehouses. (Multiple)
-8. In warehouse & store, Product filter availability check.
-9. Thinking of ways for Route preparation ( for Warehouses & Stores ) - APIs (maps) or something more.
-10. UI preparation
+1. Authentication - yash
+2. Unavailability Filter in Dashboard - piyush + warning filter
+3. Favourite option in Product and in Dashboard (along with Favourite Filter)- piyush
+4. Product Category Dropdown in Add Product and in Dashboard (along with Product Category Filter)- piyush(image) + yash(drop down)
+5. Search bar on the navbar (Right Top)- ankit
+6. View Store page. - ankit
+7. Add Warehouse & View Warehouses. (Multiple) - akshad + yash
+8. In warehouse & store, Product filter availability check.- askshad
+9. Thinking of ways for Route preparation ( for Warehouses & Stores ) - APIs (maps) or something more. - piyush
+10. UI preparation - ankit
+Products - 
+1. Image
+2. Fav(checkbox)
+3. Warning Number
+4. Category
