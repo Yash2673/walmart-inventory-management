@@ -17,7 +17,8 @@ class LoadProducts extends Component {
         this.state = { openDilog: false, singleRequest: {}, availabilityRequired: "All" };
         this.requiredAvaialble = [
             "All",
-            "Availabile"
+            "Availabile",
+            "UnAvailabile"
         ]
     }
 
@@ -42,16 +43,22 @@ class LoadProducts extends Component {
     }
 
     handleRequiredTypeChange = (event, index, value) => { this.setState({ availabilityRequired: value }); console.log(value) };
-
+    
     testtype(availability, quantity) {
         if (this.state.availabilityRequired == "All") {
             return true;
         } else if (availability && quantity > 0) {
             return true;
-        } else {
+        } 
+        else if (!availability && quantity === 0) {
+            return false;
+        }
+        else {
             return false;
         }
     }
+
+   
 
     handleRequiredRequest(event) {
         browserHistory.push('/addProduct');
@@ -79,6 +86,18 @@ class LoadProducts extends Component {
             />,
         ];
         const application = this.props && this.props.application && this.props.application.allProducts ? this.props.application.allProducts : [];
+        const productCategories = [];
+
+        if(application && application.length) {
+            for(var i=0;i<application.length;i++)
+            {
+                if(!productCategories.includes(application[i].category)) {
+                    productCategories.push(application[i].category);
+                }
+            }
+            console.log(productCategories)
+        }
+        
         var that = this;
         return (
             <div>
@@ -99,7 +118,7 @@ class LoadProducts extends Component {
                         }
                     </mat.SelectField>
                 </div>
-                {/*<mat.Dialog
+                {/* <mat.Dialog
                 title="Inident Details"
                 actions={actions}
                 modal={false}
@@ -143,7 +162,7 @@ class LoadProducts extends Component {
                     </mat.TableRow>
                 </mat.TableBody>
                 </mat.Table>
-</mat.Dialog>*/}
+</mat.Dialog> */}
                 <mat.Paper zDepth={3} className="report-table">
                     {application && application.length > 0 ?
                         <mat.Table
@@ -173,6 +192,7 @@ class LoadProducts extends Component {
                                                 <mat.TableRowColumn>{todo.manufacturer}</mat.TableRowColumn>
                                                 <mat.TableRowColumn>{todo.availability ? "True" : "Out Of Stock"}</mat.TableRowColumn>
                                                 <mat.TableRowColumn>{todo.quantity}</mat.TableRowColumn>
+                                              
                                                 <mat.TableRowColumn>
                                                     {
                                                         <Link
@@ -180,7 +200,7 @@ class LoadProducts extends Component {
                                                             className="btn btn-primary">
                                                             Update
                                                         </Link>}
-                                                    {/*<mat.RaisedButton type="button" label="Request" primary={true} onClick={() => this.handleRequiredRequest(todo)} />*/}
+                                                    {/* <mat.RaisedButton type="button" label="Update" primary={true} onClick={() => this.handleRequiredRequest(todo.key)} /> */}
                                                 </mat.TableRowColumn>
                                                 <mat.TableRowColumn></mat.TableRowColumn>
                                             </mat.TableRow>

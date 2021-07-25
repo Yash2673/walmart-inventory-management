@@ -88,6 +88,7 @@ export function applicationReducer(state = initial_state, action) {
       state = newState;
       return state;
     }
+    
     case ActionTypes.viewAllCrimesRequestSuccess: {
       var newState = Object.assign({}, state, { allCrimes: action.data });
       state = newState;

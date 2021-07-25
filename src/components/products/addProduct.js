@@ -35,6 +35,8 @@ class AddProduct extends Component {
         var description = this.refs.description.getValue();
         var quantity = this.refs.quantity.getValue();
         var price = this.refs.price.getValue();
+        var category = this.refs.category.getValue();
+        var favourite = this.refs.category.getValue();
         var objectToSave = {
             uid: this.props.application.user.uid,
             userEmail: this.props.application.user.email,
@@ -42,7 +44,9 @@ class AddProduct extends Component {
             manufacturer: manufacturer,
             description: description,
             quantity: quantity,
+            favourite: favourite,
             price: price,
+            category: category,
             availability: true
         }
         console.log(objectToSave);
@@ -113,13 +117,40 @@ class AddProduct extends Component {
                                 type="text"
                                 onChange={this.handleInputChange}
                             />
+                            <br/>
+                            <mat.TextField
+                                hintText="Product Category"
+                                floatingLabelText="Product Category"
+                                className="full-width-container"
+                                ref="category"
+                                name="category"
+                                required={true}
+                                type="text"
+                                onChange={this.handleInputChange}
+                            />
+                            <br/>
+                            <mat.TextField
+                                hintText="Favourite"
+                                floatingLabelText="Product Favourite"
+                                className="full-width-container"
+                                ref="favourite"
+                                name="favourite"
+                                required={true}
+                                type="boolean"
+                                onChange={this.handleInputChange}
+                            /><br />
 
-                            {/* <mat.InputLabel id="demo-simple-select-label">Catergory</mat.InputLabel>
+                            {/* <mat.InputLabel id="demo-simple-select-label">Category</mat.InputLabel>
                             <mat.Select
                                 labelId="demo-simple-select-label"
                                 id="demo-simple-select"
-                                // value={age}
-                                // onChange={handleChange}
+                                hintText="Category"
+                                floatingLabelText="Category"
+                                className="full-width-container"
+                                ref="category"
+                                name="category"
+                                required={true}
+                                onChange={this.handleInputChange}
                             >
                                 <mat.MenuItem value={10}>Ten</mat.MenuItem>
                                 <mat.MenuItem value={20}>Twenty</mat.MenuItem>
