@@ -1,0 +1,36 @@
+Warehouse : 
+
+Add Form- 
+
+Name
+Location
+Manager
+Contact 
+Email
+
+View - 
+
+Name	Location	Manager	 	Products List(Link) 	Add Product(Link) 	Delete Warehouse(Link)
+
+
+Warehouse Product List - 
+				+ Add Product
+
+Name	ID 	Product Type	Quantity	
+
+
+Current - Store Product List
+
+				+ Add Product
+
+Name	ID 	Product Type	Quantity
+	
+
+Add Product from Warehouse to Store - 
+
+Product Name Dropdown
+Quantity
+
+
+
+
