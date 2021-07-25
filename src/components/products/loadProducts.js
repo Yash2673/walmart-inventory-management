@@ -14,7 +14,7 @@ import {
 class LoadProducts extends Component {
     constructor(props) {
         super(props);
-        this.state = {openDilog:false,singleRequest:{},availabilityRequired:"All"};
+        this.state = { openDilog: false, singleRequest: {}, availabilityRequired: "All" };
         this.requiredAvaialble = [
             "All",
             "Availabile"
@@ -26,7 +26,7 @@ class LoadProducts extends Component {
         this.props.loadProductsRequest(this.props.application.user);
     }
 
-    componentDidUpdate(){
+    componentDidUpdate() {
         this.props.loadProductsRequest(this.props.application.user);
     }
 
@@ -40,14 +40,14 @@ class LoadProducts extends Component {
         }, 5)
     }
 
-handleRequiredTypeChange = (event, index, value) => { this.setState({ availabilityRequired: value }); console.log(value) };
+    handleRequiredTypeChange = (event, index, value) => { this.setState({ availabilityRequired: value }); console.log(value) };
 
-    testtype(availability,quantity) {
-        if(this.state.availabilityRequired=="All"){
+    testtype(availability, quantity) {
+        if (this.state.availabilityRequired == "All") {
             return true;
-        }else if(availability && quantity>0){
+        } else if (availability && quantity > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
@@ -68,7 +68,7 @@ handleRequiredTypeChange = (event, index, value) => { this.setState({ availabili
             textDecoration: 'none',
             color: '#000'
         };
-        
+
         const actions = [
             <mat.FlatButton
                 label="Close"
@@ -76,29 +76,29 @@ handleRequiredTypeChange = (event, index, value) => { this.setState({ availabili
                 keyboardFocused={true}
                 onTouchTap={this.handleCloseDilog}
             />,
-            ];
+        ];
         const application = this.props && this.props.application && this.props.application.allProducts ? this.props.application.allProducts : [];
         var that = this;
         return (
             <div>
-            <div className="blood-type">
-                            <mat.SelectField
-                                ref="requiredCity"
-                                name="requiredCity"
-                                floatingLabelText="Filter By Avaialbility"
-                                onChange={this.handleRequiredTypeChange}
-                                className="full-width-container"
-                                value={this.state.availabilityRequired}
-                                required={true}
-                                >
-                                {
-                                    this.requiredAvaialble.map(requiredIncident => {
-                                        return <mat.MenuItem key={requiredIncident} value={requiredIncident} primaryText={requiredIncident} />
-                                    })
-                                }
-                            </mat.SelectField>
-                        </div>
-            {/*<mat.Dialog
+                <div className="blood-type">
+                    <mat.SelectField
+                        ref="requiredCity"
+                        name="requiredCity"
+                        floatingLabelText="Filter By Avaialbility"
+                        onChange={this.handleRequiredTypeChange}
+                        className="full-width-container"
+                        value={this.state.availabilityRequired}
+                        required={true}
+                    >
+                        {
+                            this.requiredAvaialble.map(requiredIncident => {
+                                return <mat.MenuItem key={requiredIncident} value={requiredIncident} primaryText={requiredIncident} />
+                            })
+                        }
+                    </mat.SelectField>
+                </div>
+                {/*<mat.Dialog
                 title="Inident Details"
                 actions={actions}
                 modal={false}
@@ -143,52 +143,52 @@ handleRequiredTypeChange = (event, index, value) => { this.setState({ availabili
                 </mat.TableBody>
                 </mat.Table>
 </mat.Dialog>*/}
-            <mat.Paper zDepth={3} className="report-table">
-                {application && application.length > 0 ?
-                            <mat.Table
+                <mat.Paper zDepth={3} className="report-table">
+                    {application && application.length > 0 ?
+                        <mat.Table
+                            adjustForCheckbox={false}
+                            displayRowCheckbox={false}>
+                            <mat.TableHeader
                                 adjustForCheckbox={false}
-                                displayRowCheckbox={false}>
-                                <mat.TableHeader
-                                    adjustForCheckbox={false}
-                                    displaySelectAll={false}>
-                                    <mat.TableRow>
+                                displaySelectAll={false}>
+                                <mat.TableRow>
 
-                                        <mat.TableHeaderColumn>Number</mat.TableHeaderColumn>
-                                        <mat.TableHeaderColumn>Product Name</mat.TableHeaderColumn>
-                                        <mat.TableHeaderColumn>Product Manufacturer</mat.TableHeaderColumn>
-                                        <mat.TableHeaderColumn>Availability</mat.TableHeaderColumn>
-                                        <mat.TableHeaderColumn>Availabile Quantity</mat.TableHeaderColumn>
-                                        <mat.TableHeaderColumn></mat.TableHeaderColumn>
-                                        <mat.TableHeaderColumn></mat.TableHeaderColumn>
-                                    </mat.TableRow>
-                                </mat.TableHeader>
-                                <mat.TableBody displayRowCheckbox={false}>
-                                    {application.map((todo, index) => {
-                                        if (that.testtype(todo.availability,todo.quantity)) {
-                                            return (
-                                                <mat.TableRow key={index} selectable={false}>
-                                                    <mat.TableRowColumn>{index + 1}</mat.TableRowColumn>
-                                                    <mat.TableRowColumn>{todo.productName}</mat.TableRowColumn>
-                                                    <mat.TableRowColumn>{todo.manufacturer}</mat.TableRowColumn>
-                                                    <mat.TableRowColumn>{todo.availability?"True":"Out Of Stock"}</mat.TableRowColumn>
-                                                    <mat.TableRowColumn>{todo.quantity}</mat.TableRowColumn>
-                                                    <mat.TableRowColumn>
-                                                   {
-                                                       <Link
-                                                        to={"/updateProduct/"+todo.key}
-                                                        className="btn btn-primary">
-                                                        Update
-                                                    </Link>}
+                                    <mat.TableHeaderColumn>Number</mat.TableHeaderColumn>
+                                    <mat.TableHeaderColumn>Product Name</mat.TableHeaderColumn>
+                                    <mat.TableHeaderColumn>Product Manufacturer</mat.TableHeaderColumn>
+                                    <mat.TableHeaderColumn>Availability</mat.TableHeaderColumn>
+                                    <mat.TableHeaderColumn>Availabile Quantity</mat.TableHeaderColumn>
+                                    <mat.TableHeaderColumn></mat.TableHeaderColumn>
+                                    <mat.TableHeaderColumn></mat.TableHeaderColumn>
+                                </mat.TableRow>
+                            </mat.TableHeader>
+                            <mat.TableBody displayRowCheckbox={false}>
+                                {application.map((todo, index) => {
+                                    if (that.testtype(todo.availability, todo.quantity)) {
+                                        return (
+                                            <mat.TableRow key={index} selectable={false}>
+                                                <mat.TableRowColumn>{index + 1}</mat.TableRowColumn>
+                                                <mat.TableRowColumn>{todo.productName}</mat.TableRowColumn>
+                                                <mat.TableRowColumn>{todo.manufacturer}</mat.TableRowColumn>
+                                                <mat.TableRowColumn>{todo.availability ? "True" : "Out Of Stock"}</mat.TableRowColumn>
+                                                <mat.TableRowColumn>{todo.quantity}</mat.TableRowColumn>
+                                                <mat.TableRowColumn>
+                                                    {
+                                                        <Link
+                                                            to={"/updateProduct/" + todo.key}
+                                                            className="btn btn-primary">
+                                                            Update
+                                                        </Link>}
                                                     {/*<mat.RaisedButton type="button" label="Request" primary={true} onClick={() => this.handleRequiredRequest(todo)} />*/}
-                                                    </mat.TableRowColumn>
-                                                    <mat.TableRowColumn></mat.TableRowColumn>
-                                                </mat.TableRow>
-                                            );
-                                        }
-                                    })}
-                                </mat.TableBody>
-                            </mat.Table>
-                            : null}
+                                                </mat.TableRowColumn>
+                                                <mat.TableRowColumn></mat.TableRowColumn>
+                                            </mat.TableRow>
+                                        );
+                                    }
+                                })}
+                            </mat.TableBody>
+                        </mat.Table>
+                        : null}
                 </mat.Paper>
             </div>
         );

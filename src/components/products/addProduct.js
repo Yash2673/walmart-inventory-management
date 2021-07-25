@@ -12,7 +12,7 @@ import {
 } from 'react-router';
 class AddProduct extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -28,7 +28,7 @@ class AddProduct extends Component {
         }, 5)
     }
 
-        handleSubmit(evt) {
+    handleSubmit(evt) {
         evt.preventDefault();
         var productName = this.refs.productName.getValue();
         var manufacturer = this.refs.manufacturer.getValue();
@@ -36,14 +36,14 @@ class AddProduct extends Component {
         var quantity = this.refs.quantity.getValue();
         var price = this.refs.price.getValue();
         var objectToSave = {
-            uid : this.props.application.user.uid,
-            userEmail : this.props.application.user.email,
-            productName : productName,
-            manufacturer : manufacturer,
-            description : description,
-            quantity : quantity,
-            price : price,
-            availability : true
+            uid: this.props.application.user.uid,
+            userEmail: this.props.application.user.email,
+            productName: productName,
+            manufacturer: manufacturer,
+            description: description,
+            quantity: quantity,
+            price: price,
+            availability: true
         }
         console.log(objectToSave);
         console.log(this.props.application.user);
@@ -69,7 +69,7 @@ class AddProduct extends Component {
                                 required={true}
                                 type="text"
                                 onChange={this.handleInputChange}
-                                /><br />
+                            /><br />
                             <mat.TextField
                                 hintText="Product Manufacturer"
                                 floatingLabelText="Product Manufacturer"
@@ -79,7 +79,7 @@ class AddProduct extends Component {
                                 required={true}
                                 type="text"
                                 onChange={this.handleInputChange}
-                                /><br />
+                            /><br />
                             <mat.TextField
                                 hintText="Product Description"
                                 floatingLabelText="Product Description"
@@ -92,7 +92,7 @@ class AddProduct extends Component {
                                 required={true}
                                 type="text"
                                 onChange={this.handleInputChange}
-                                /><br />
+                            /><br />
                             <mat.TextField
                                 hintText="Product Quantity"
                                 floatingLabelText="Product Quantity"
@@ -102,7 +102,7 @@ class AddProduct extends Component {
                                 required={true}
                                 type="number"
                                 onChange={this.handleInputChange}
-                                /><br /> 
+                            /><br />
                             <mat.TextField
                                 hintText="Product Price"
                                 floatingLabelText="Product Price"
@@ -112,7 +112,21 @@ class AddProduct extends Component {
                                 required={true}
                                 type="text"
                                 onChange={this.handleInputChange}
-                                /><br /> 
+                            />
+
+                            {/* <mat.InputLabel id="demo-simple-select-label">Catergory</mat.InputLabel>
+                            <mat.Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                // value={age}
+                                // onChange={handleChange}
+                            >
+                                <mat.MenuItem value={10}>Ten</mat.MenuItem>
+                                <mat.MenuItem value={20}>Twenty</mat.MenuItem>
+                                <mat.MenuItem value={30}>Thirty</mat.MenuItem>
+                            </mat.Select> */}
+
+                            <br />
                             <mat.RaisedButton type="submit" label="Submit" primary={true} />
                         </form>
                     </mat.CardText>

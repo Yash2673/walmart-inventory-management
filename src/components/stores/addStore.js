@@ -20,7 +20,6 @@ class AddStore extends Component {
 
     handleSubmit(evt) {
         evt.preventDefault();
-        console.log(1)
         var storeName = this.refs.storeName.getValue();
         var storeDescription = this.refs.storeDescription.getValue();
         var objectToSave = {
