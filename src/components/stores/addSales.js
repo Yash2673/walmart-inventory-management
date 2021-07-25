@@ -34,9 +34,11 @@ class AddSale extends Component {
             this.props.loadProductsRequest(this.props.application.user)
         }, 10)
     }
-    componentDidUpdate() {
-        this.props.loadstoresRequest(this.props.application.user.email);
-        this.props.loadProductsRequest(this.props.application.user)
+    componentDidUpdate(prevProps) {
+        if(JSON.stringify(prevProps.application) !== JSON.stringify(this.props.application)){
+            this.props.loadstoresRequest(this.props.application.user.email);
+            this.props.loadProductsRequest(this.props.application.user)
+        }
     }
 
     handleChange = (event, index, value) => this.setState({ storeName: value });

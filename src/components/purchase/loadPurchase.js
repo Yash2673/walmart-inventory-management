@@ -31,8 +31,9 @@ class LoadPurchase extends Component {
         this.props.loadPurchaseRequest(this.props.application.user);
     }
 
-    componentDidUpdate(){
-        this.props.loadPurchaseRequest(this.props.application.user);
+    componentDidUpdate(prevProps) {
+        if(JSON.stringify(prevProps.application) !== JSON.stringify(this.props.application))
+            this.props.loadPurchaseRequest(this.props.application.user);
     }
 
     componentWillReceiveProps() {

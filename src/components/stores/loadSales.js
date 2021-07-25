@@ -47,7 +47,7 @@ class LoadSales extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(prevProps.application.user !== this.props.application.user) {
+        if(JSON.stringify(prevProps.application) !== JSON.stringify(this.props.application)){
             this.props.loadSalesRequest(this.props.application.user);
             setTimeout(() => {
                 this.graphUpdate();

@@ -24,8 +24,9 @@ class UpdateProduct extends Component {
         this.props.loadProductsRequest(this.props.application.user);
     }
 
-    componentDidUpdate(){
-        this.props.loadProductsRequest(this.props.application.user);
+    componentDidUpdate(prevProps) {
+        if(JSON.stringify(prevProps.application) !== JSON.stringify(this.props.application))
+            this.props.loadProductsRequest(this.props.application.user);
     }
 
     componentWillReceiveProps() {
