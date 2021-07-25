@@ -95,7 +95,6 @@ class LoadProducts extends Component {
                     productCategories.push(application[i].category);
                 }
             }
-            console.log(productCategories)
         }
         
         var that = this;
@@ -118,6 +117,23 @@ class LoadProducts extends Component {
                         }
                     </mat.SelectField>
                 </div>
+                {/* <div className="blood-type">
+                    <mat.SelectField
+                        ref="requiredCity"
+                        name="requiredCity"
+                        floatingLabelText="Filter By Avaialbility"
+                        onChange={this.handleRequiredTypeChange}
+                        className="full-width-container"
+                        value={this.state.availabilityRequired}
+                        required={true}
+                    >
+                        {
+                            this.requiredAvaialble.map(requiredIncident => {
+                                return <mat.MenuItem key={requiredIncident} value={requiredIncident} primaryText={requiredIncident} />
+                            })
+                        }
+                    </mat.SelectField>
+                </div> */}
                 {/* <mat.Dialog
                 title="Inident Details"
                 actions={actions}
