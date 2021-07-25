@@ -23,6 +23,10 @@ const actionTypes = {
   addProductRequestFailed: 'addProductRequestFailed',
   addProductRequestSuccess: 'addProductRequestSuccess',
 
+  addWarehouseRequest: 'addWarehouseRequest',
+  addWarehouseRequestFailed: 'addWarehouseRequestFailed',
+  addWarehouseRequestSuccess: 'addWarehouseRequestSuccess',
+
   updateProductRequest: 'updateProductRequest',
   updateProductRequestFailed: 'updateProductRequestFailed',
   updateProductRequestSuccess: 'updateProductRequestSuccess',

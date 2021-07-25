@@ -9,11 +9,13 @@ import SignUpContainer from './containers/signup';
 import rootMainContainer from './containers/rootContainer';
 import DashboardContainer from './containers/dashboard';
 import AddProductContainer from './containers/addProduct';
+import AddWarehouseContainer from './containers/addWareHouse';
 import AddStoreContainer from './containers/addStore';
 import UpdateProductContainer from './containers/updateProduct';
 import AddSalesContainer from './containers/addSales';
 import AddPurchaseContainer from './containers/addPurchase';
 import LoadProductsContainer from './containers/loadProducts';
+import LoadWarehouseContainer from './containers/loadWarehouse';
 import LoadSalesContainer from './containers/loadSales';
 import LoadPurchaseContainer from './containers/loadPurchase';
 import ViewAllCrimesContainer from './containers/viewAllCrimes';
@@ -43,7 +45,9 @@ class RootComponent extends Component {
               <Route path="/" component={rootMainContainer}>
                 <IndexRedirect to="/login" />
                 <Route path="/dashboard" component={LoadProductsContainer} />
+                <Route path="/dashboard" component={LoadWarehouseContainer} />
                 <Route path="/addProduct" component={AddProductContainer} />
+                <Route path="/addWareHouse" component={AddWarehouseContainer} />
                 <Route path="/updateProduct/:productId" component={UpdateProductContainer} />
                 <Route path="/addStore" component={AddStoreContainer} />
                 <Route path="/addSales" component={AddSalesContainer} />

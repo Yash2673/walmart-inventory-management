@@ -58,6 +58,11 @@ export function applicationReducer(state = initial_state, action) {
       state = newState;
       return state;
     }
+    case ActionTypes.addWarehouseRequestSuccess: {
+      var newState = Object.assign({}, state);
+      state = newState;
+      return state;
+    }
     case ActionTypes.addStoreRequestSuccess: {
       var newState = Object.assign({}, state);
       state = newState;
@@ -85,6 +90,11 @@ export function applicationReducer(state = initial_state, action) {
     }
     case ActionTypes.loadProductsRequestSuccess: {
       var newState = Object.assign({}, state, { allProducts: action.data });
+      state = newState;
+      return state;
+    }
+    case ActionTypes.loadWarehouseRequestSuccess: {
+      var newState = Object.assign({}, state, { allWarehouse: action.data });
       state = newState;
       return state;
     }

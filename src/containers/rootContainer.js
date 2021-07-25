@@ -31,6 +31,7 @@ class rootContainer extends Component {
         this.setState({ open: !this.state.open })
         browserHistory.push('/dashboard');
     };
+  
 
     gotoAvailable = () => {
         this.setState({ open: !this.state.open })
@@ -85,6 +86,10 @@ class rootContainer extends Component {
         this.setState({ open: !this.state.open })
         browserHistory.push('/addProduct');
     }
+    addWarehouse = () => {
+        this.setState({ open: !this.state.open })
+        browserHistory.push('/addWareHouse');
+    }
 
     addPurchase = () => {
         this.setState({ open: !this.state.open })
@@ -110,7 +115,9 @@ class rootContainer extends Component {
                     <mat.MenuItem disabled className="disbaledImage"><img src="http://rig-serv.com/wp-content/uploads/2016/03/inventory-matters-logo-white.png" className="logoImage" /></mat.MenuItem>
                     <mat.MenuItem onTouchTap={this.gotoDashoard}>Dashoard</mat.MenuItem>
                     <mat.MenuItem onTouchTap={this.addProduct}>Add Product</mat.MenuItem>
+                    <mat.MenuItem onTouchTap={this.addWarehouse}>Add Warehouse</mat.MenuItem>
                     <mat.MenuItem onTouchTap={this.gotoDashoard}>View Stores</mat.MenuItem>
+                    <mat.MenuItem onTouchTap={this.gotoWarehouse}>View Warehouse</mat.MenuItem>
                     <mat.MenuItem onTouchTap={this.gotoAddStores}>Add Stores</mat.MenuItem>
                     <mat.MenuItem onTouchTap={this.gotoViewSales}>View Sales</mat.MenuItem>
                     <mat.MenuItem onTouchTap={this.gotoAddSales}>Add Sales</mat.MenuItem>
