@@ -58,6 +58,7 @@ class RootComponent extends Component {
                 <Route path="/viewProducts" component={LoadProductsContainer} />
                 <Route path="/viewAllCrimes" component={ViewAllCrimesContainer} />
                 <Route path="/viewStores" component={ViewStore} />
+                <Route path="/viewWarehouses" component={LoadWarehouseContainer} />
               </Route>
               <Route path="/login" component={LoginContainer}>
               </Route>

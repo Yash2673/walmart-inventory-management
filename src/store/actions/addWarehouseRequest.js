@@ -1,12 +1,13 @@
 import ActionTypes from './actionTypes';
 import * as fbConfigs from '../../configs/dbconfigs';
 
-export function addWarehouseRequest(ProductData) {
-    console.log(ProductData);
+export function addWarehouseRequest(reportData) {
+    console.log(reportData);
     return dispatch => {
-        dispatch(addWarehouseRequest());
-        ProductData.isPublic =  ProductData.inicidentType!=3?true:false;
-        return fbConfigs.database.ref('/warehouse').push(ProductData).then((data)=>{
+        dispatch(AddWarehouseRequest());
+        reportData.isPublic =  reportData.inicidentType!=3?true:false;
+        console.log("yes")
+        return fbConfigs.database.ref('/Warehouses').push(reportData).then((data)=>{
             alert("Successfully Added.");
             dispatch(addWarehouseRequestSuccess(data));
         }).catch(err => {
@@ -15,7 +16,8 @@ export function addWarehouseRequest(ProductData) {
     }
 }
 
-function addWarehouseRequest() {
+function AddWarehouseRequest() {
+    console.log("Yes2")
     return {
         type: ActionTypes.addWarehouseRequest
     };

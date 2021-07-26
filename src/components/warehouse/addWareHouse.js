@@ -50,6 +50,7 @@ class AddWarehouse extends Component {
         }
         console.log(objectToSave);
         console.log(this.props.application.user);
+        console.log(this.props.addWarehouseRequest)
         this.props.addWarehouseRequest(objectToSave);
     }
 

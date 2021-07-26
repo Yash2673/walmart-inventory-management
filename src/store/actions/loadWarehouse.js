@@ -3,10 +3,10 @@ import * as fbConfigs from '../../configs/dbconfigs';
 
 export function loadWarehouseRequest(loadWarehouseData) {
     return dispatch => {
-        dispatch(loadWarehouseRequest());
+        dispatch(LoadWarehouseRequest());
         console.log(loadWarehouseData)
         if(loadWarehouseData){
-            return fbConfigs.database.ref('/warehouse').orderByChild('userEmail').equalTo( loadWarehouseData.email).once('value', snap => {
+            return fbConfigs.database.ref('/Warehouses').orderByChild('userEmail').equalTo( loadWarehouseData.email).once('value', snap => {
                 const todo = [];
                 snap.forEach(childSnapshot => {
                     var innerTodo = childSnapshot.val();
@@ -21,7 +21,7 @@ export function loadWarehouseRequest(loadWarehouseData) {
     }
 }
 
-function loadWarehouseRequest() {
+function LoadWarehouseRequest() {
     return {
         type: ActionTypes.loadWarehouseRequest
     };

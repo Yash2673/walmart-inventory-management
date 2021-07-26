@@ -159,10 +159,9 @@ class LoadStores extends Component {
                                 adjustForCheckbox={false}
                                 displaySelectAll={false}>
                                 <mat.TableRow>
-
+                                    <mat.TableHeaderColumn>Number</mat.TableHeaderColumn>
                                     <mat.TableHeaderColumn>Store Name</mat.TableHeaderColumn>
                                     <mat.TableHeaderColumn>Description</mat.TableHeaderColumn>
-                                   
                                 </mat.TableRow>
                             </mat.TableHeader>
                             <mat.TableBody displayRowCheckbox={false}>
@@ -173,9 +172,6 @@ class LoadStores extends Component {
                                                 <mat.TableRowColumn>{index + 1}</mat.TableRowColumn>
                                                 <mat.TableRowColumn>{todo.storeName}</mat.TableRowColumn>
                                                 <mat.TableRowColumn>{todo.storeDescription}</mat.TableRowColumn>
-                                               
-                                               
-                                                <mat.TableRowColumn></mat.TableRowColumn>
                                             </mat.TableRow>
                                         );
                                     }

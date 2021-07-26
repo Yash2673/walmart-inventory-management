@@ -53,6 +53,11 @@ class rootContainer extends Component {
         browserHistory.push('/viewStores');
     };
 
+    gotoWarehouses = () => {
+        this.setState({ open: !this.state.open })
+        browserHistory.push('/viewWarehouses');
+    };
+
     gotoComplains = () => {
         this.setState({ open: !this.state.open })
         browserHistory.push('/myIncidents');
@@ -111,8 +116,8 @@ class rootContainer extends Component {
         return (
             <div>
                 <div>
-                    < mat.AppBar
-                        title="Inventory Management System"
+                    <mat.AppBar
+                        title="Prayas Inventory"
                         onLeftIconButtonTouchTap={this._handleClick}
                         className=""
                     />
@@ -130,10 +135,8 @@ class rootContainer extends Component {
                             <mat.MenuItem onTouchTap={this.gotoDashoard}>Dashboard</mat.MenuItem>
                             <mat.MenuItem onTouchTap={this.addProduct}>Add Product</mat.MenuItem>
                             <mat.MenuItem onTouchTap={this.addWarehouse}>Add Warehouse</mat.MenuItem>
-                            <mat.MenuItem onTouchTap={this.gotoDashoard}>View Stores</mat.MenuItem>
-                            <mat.MenuItem onTouchTap={this.gotoWarehouse}>View Warehouse</mat.MenuItem>
+                            <mat.MenuItem onTouchTap={this.gotoWarehouses}>View Warehouse</mat.MenuItem>
                             <mat.MenuItem onTouchTap={this.gotoViewStores}>View Stores</mat.MenuItem>
-
                             <mat.MenuItem onTouchTap={this.gotoAddStores}>Add Stores</mat.MenuItem>
                             <mat.MenuItem onTouchTap={this.gotoViewSales}>View Sales</mat.MenuItem>
                             <mat.MenuItem onTouchTap={this.gotoAddSales}>Add Sales</mat.MenuItem>

@@ -63,15 +63,13 @@ const actionTypes = {
   loadPurchasesRequestFailed: 'loadPurchasesRequestFailed',
   loadPurchasesRequestSuccess: 'loadPurchasesRequestSuccess',
 
-
-  loadstoresRequestFailed: 'loadstoresRequest',
+  loadstoresRequest: 'loadstoresRequest',
   loadstoresRequestFailed: 'loadstoresRequestFailed',
   loadstoresRequestSuccess: 'loadstoresRequestSuccess',
 
-  loadstoresRequestFailed: 'loadstoresRequest',
-  loadstoresRequestFailed: 'loadstoresRequestFailed',
-  loadstoresRequestSuccess: 'loadstoresRequestSuccess',
-
+  loadWarehouseRequest: 'loadWarehouseRequest',
+  loadWarehouseRequestSuccess: 'loadWarehouseRequestSuccess',
+  loadWarehouseRequestFailed: 'loadWarehouseRequestFailed',
 
   viewAllCrimesRequest: 'viewAllCrimesRequest',
   viewAllCrimesRequestFailed: 'viewAllCrimesRequestFailed',

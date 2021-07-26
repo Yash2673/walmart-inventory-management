@@ -78,11 +78,11 @@ class LoadWarehouse extends Component {
                 onTouchTap={this.handleCloseDilog}
             />,
         ];
-        const application = this.props && this.props.application && this.props.application.allProducts ? this.props.application.allProducts : [];
+        const application = this.props && this.props.application && this.props.application.allWarehouse ? this.props.application.allWarehouse : [];
         var that = this;
         return (
             <div>
-                <div className="blood-type">
+                {/* <div className="blood-type">
                     <mat.SelectField
                         ref="requiredCity"
                         name="requiredCity"
@@ -98,7 +98,7 @@ class LoadWarehouse extends Component {
                             })
                         }
                     </mat.SelectField>
-                </div>
+                </div> */}
                 {/*<mat.Dialog
                 title="Inident Details"
                 actions={actions}
@@ -155,12 +155,11 @@ class LoadWarehouse extends Component {
                                 <mat.TableRow>
 
                                     <mat.TableHeaderColumn>Number</mat.TableHeaderColumn>
-                                    <mat.TableHeaderColumn>Product Name</mat.TableHeaderColumn>
-                                    <mat.TableHeaderColumn>Location</mat.TableHeaderColumn>
-                                    <mat.TableHeaderColumn>Product Manufacturer</mat.TableHeaderColumn>
-                                   
-                                    <mat.TableHeaderColumn></mat.TableHeaderColumn>
-                                    <mat.TableHeaderColumn></mat.TableHeaderColumn>
+                                    <mat.TableHeaderColumn>Warehouse Name</mat.TableHeaderColumn>
+                                    <mat.TableHeaderColumn>Manager</mat.TableHeaderColumn>
+                                    <mat.TableHeaderColumn>City</mat.TableHeaderColumn>
+                                    <mat.TableHeaderColumn>Email</mat.TableHeaderColumn>
+                                    <mat.TableHeaderColumn>Contact</mat.TableHeaderColumn>
                                 </mat.TableRow>
                             </mat.TableHeader>
                             <mat.TableBody displayRowCheckbox={false}>
@@ -172,18 +171,8 @@ class LoadWarehouse extends Component {
                                                 <mat.TableRowColumn>{todo.warehouseName}</mat.TableRowColumn>
                                                 <mat.TableRowColumn>{todo.managerName}</mat.TableRowColumn>
                                                 <mat.TableRowColumn>{todo.city}</mat.TableRowColumn>
-                                                {/* <mat.TableRowColumn>{todo.availability ? "True" : "Out Of Stock"}</mat.TableRowColumn> */}
-                                                <mat.TableRowColumn>{todo.quantity}</mat.TableRowColumn>
-                                                <mat.TableRowColumn>
-                                                    {
-                                                        <Link
-                                                            to={"/updateProduct/" + todo.key}
-                                                            className="btn btn-primary">
-                                                            Update
-                                                        </Link>}
-                                                    {/*<mat.RaisedButton type="button" label="Request" primary={true} onClick={() => this.handleRequiredRequest(todo)} />*/}
-                                                </mat.TableRowColumn>
-                                                <mat.TableRowColumn></mat.TableRowColumn>
+                                                <mat.TableRowColumn>{todo.email}</mat.TableRowColumn>
+                                                <mat.TableRowColumn>{todo.cellNumber}</mat.TableRowColumn>
                                             </mat.TableRow>
                                         );
                                     }
