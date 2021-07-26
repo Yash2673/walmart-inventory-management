@@ -28,8 +28,12 @@ class rootContainer extends Component {
     };
 
     gotoDashoard = () => {
+        const user = JSON.parse(localStorage.getItem("inventoryUserData"));
         this.setState({ open: !this.state.open })
-        browserHistory.push('/dashboard');
+        if (user.manager === "Store")
+            browserHistory.push('/dashboard');
+        else
+            browserHistory.push('/viewWarehouses');
     };
 
 
@@ -113,6 +117,7 @@ class rootContainer extends Component {
     }
 
     render() {
+        const user = JSON.parse(localStorage.getItem("inventoryUserData"));
         return (
             <div>
                 <div>
@@ -122,38 +127,45 @@ class rootContainer extends Component {
                         className=""
                     />
 
-
-
                     <mat.Drawer open={this.state.open}
                         docked={false}
                         onRequestChange={(open) => this.setState({ open })}
 
                     >
+                        {
+                            user.manager === "Store" ?
 
-                        <div className="navbar">
-                            <mat.MenuItem disabled className="disbaledImage"><img src={logo} className="logoImage" /></mat.MenuItem>
-                            <mat.MenuItem onTouchTap={this.gotoDashoard}>Dashboard</mat.MenuItem>
-                            <mat.MenuItem onTouchTap={this.addProduct}>Add Product</mat.MenuItem>
-                            <mat.MenuItem onTouchTap={this.addWarehouse}>Add Warehouse</mat.MenuItem>
-                            <mat.MenuItem onTouchTap={this.gotoWarehouses}>View Warehouse</mat.MenuItem>
-                            <mat.MenuItem onTouchTap={this.gotoViewStores}>View Stores</mat.MenuItem>
-                            <mat.MenuItem onTouchTap={this.gotoAddStores}>Add Stores</mat.MenuItem>
-                            <mat.MenuItem onTouchTap={this.gotoViewSales}>View Sales</mat.MenuItem>
-                            <mat.MenuItem onTouchTap={this.gotoAddSales}>Add Sales</mat.MenuItem>
-                            <mat.MenuItem onTouchTap={this.viewPurchase}>View Purchases</mat.MenuItem>
-                            <mat.MenuItem onTouchTap={this.addPurchase}>Add Purchases</mat.MenuItem>
-                            {/*<mat.MenuItem onTouchTap={this.gotoAvailable}>Add Report</mat.MenuItem>
-                    <mat.MenuItem onTouchTap={this.gotoComplains}>View My Compalains</mat.MenuItem>
-                    <mat.MenuItem onTouchTap={this.gotoViewCrimes}>View Crimes List</mat.MenuItem>*/}
-                            {/*this.state && this.state.isAdmin?<mat.MenuItem onTouchTap={this.gotoAllViewCrimes}>Respond to Crimes</mat.MenuItem>:""*/}
-                            <mat.MenuItem onTouchTap={this.logOutRequest}>Logout</mat.MenuItem>
-                        </div>
+                                <div className="navbar">
+                                    <mat.MenuItem disabled className="disbaledImage"><img src={logo} className="logoImage" /></mat.MenuItem>
+                                    <mat.MenuItem onTouchTap={this.gotoDashoard}>Dashboard</mat.MenuItem>
+                                    <mat.MenuItem onTouchTap={this.addProduct}>Add Product</mat.MenuItem>
+                                    <mat.MenuItem onTouchTap={this.gotoAddStores}>Add Stores</mat.MenuItem>
+                                    <mat.MenuItem onTouchTap={this.gotoAddSales}>Add Sales</mat.MenuItem>
+                                    <mat.MenuItem onTouchTap={this.addPurchase}>Add Purchases</mat.MenuItem>
+                                    <mat.MenuItem onTouchTap={this.gotoViewStores}>View Stores</mat.MenuItem>
+                                    <mat.MenuItem onTouchTap={this.gotoViewSales}>View Sales</mat.MenuItem>
+                                    <mat.MenuItem onTouchTap={this.viewPurchase}>View Purchases</mat.MenuItem>
+                                    <mat.MenuItem onTouchTap={this.gotoWarehouses}>View Warehouse</mat.MenuItem>
+                                    <mat.MenuItem onTouchTap={this.logOutRequest}>Logout</mat.MenuItem>
+                                </div>
+                                :
+                                <div className="navbar">
+                                    <mat.MenuItem disabled className="disbaledImage"><img src={logo} className="logoImage" /></mat.MenuItem>
+                                    <mat.MenuItem onTouchTap={this.gotoDashoard}>Dashboard</mat.MenuItem>
+                                    <mat.MenuItem onTouchTap={this.addWarehouse}>Add Warehouse</mat.MenuItem>
+                                    <mat.MenuItem onTouchTap={this.logOutRequest}>Logout</mat.MenuItem>
+                                    {/*<mat.MenuItem onTouchTap={this.gotoAvailable}>Add Report</mat.MenuItem>
+                                    <mat.MenuItem onTouchTap={this.gotoComplains}>View My Compalains</mat.MenuItem>
+                                    <mat.MenuItem onTouchTap={this.gotoViewCrimes}>View Crimes List</mat.MenuItem>*/}
+                                    {/*this.state && this.state.isAdmin?<mat.MenuItem onTouchTap={this.gotoAllViewCrimes}>Respond to Crimes</mat.MenuItem>:""*/}
+                                </div>
+                        }
 
                     </mat.Drawer>
 
                     {this.props.children}
 
-                </div >
+                </div>
             </div>
         );
     }

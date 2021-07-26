@@ -8,7 +8,8 @@ import {
     Route,
     IndexRoute,
     Link,
-    IndexLink
+    IndexLink,
+    Redirect
 } from 'react-router';
 
 class LoadProducts extends Component {
@@ -28,7 +29,7 @@ class LoadProducts extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(JSON.stringify(prevProps.application) !== JSON.stringify(this.props.application))
+        if (JSON.stringify(prevProps.application) !== JSON.stringify(this.props.application))
             this.props.loadProductsRequest(this.props.application.user);
     }
 
@@ -43,13 +44,13 @@ class LoadProducts extends Component {
     }
 
     handleRequiredTypeChange = (event, index, value) => { this.setState({ availabilityRequired: value }); console.log(value) };
-    
+
     testtype(availability, quantity) {
         if (this.state.availabilityRequired == "All") {
             return true;
         } else if (availability && quantity > 0) {
             return true;
-        } 
+        }
         else if (!availability && quantity === 0) {
             return false;
         }
@@ -58,13 +59,17 @@ class LoadProducts extends Component {
         }
     }
 
-   
+
 
     handleRequiredRequest(event) {
         browserHistory.push('/addProduct');
     }
 
     render() {
+
+        if (JSON.parse(localStorage.getItem("inventoryUserData")).manager === "Warehouse")
+            return <Redirect to="/viewWarehouses" />
+
         const style = {
             minheight: 100,
             width: 900,
@@ -88,15 +93,14 @@ class LoadProducts extends Component {
         const application = this.props && this.props.application && this.props.application.allProducts ? this.props.application.allProducts : [];
         const productCategories = [];
 
-        if(application && application.length) {
-            for(var i=0;i<application.length;i++)
-            {
-                if(!productCategories.includes(application[i].category)) {
+        if (application && application.length) {
+            for (var i = 0; i < application.length; i++) {
+                if (!productCategories.includes(application[i].category)) {
                     productCategories.push(application[i].category);
                 }
             }
         }
-        
+
         var that = this;
         return (
             <div>
@@ -208,7 +212,7 @@ class LoadProducts extends Component {
                                                 <mat.TableRowColumn>{todo.manufacturer}</mat.TableRowColumn>
                                                 <mat.TableRowColumn>{todo.availability ? "True" : "Out Of Stock"}</mat.TableRowColumn>
                                                 <mat.TableRowColumn>{todo.quantity}</mat.TableRowColumn>
-                                              
+
                                                 <mat.TableRowColumn>
                                                     {
                                                         <Link

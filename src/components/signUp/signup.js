@@ -16,18 +16,12 @@ class SignUp extends Component {
     constructor(props) {
         super(props);
         this.citiesGroup = [
-            "Huntsville",
-            "Anchorage",
-            "Phoenix",
-            "Little-Rock",
-            "Sacramento",
-            "Los-Angeles",
-            "Beverly-Hills",
-            "Denver",
-            "Hartford",
-            "Washington"
+            "Chennai",
+            "Delhi",
+            "Kolkata",
+            "Mumbai"
         ]
-        this.state = { email: '', password: '', name: '', gender: 1, address: '', cityname: "Washington" };
+        this.state = { email: '', password: '', name: '', gender: 1, address: '', cityname: "",manager: "" };
         this.handleSubmit = this.handleLoginSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
     }
@@ -47,6 +41,7 @@ class SignUp extends Component {
 
     handleCityTypeChange = (event, index, value) => this.setState({ cityname: value });
     handleGenderTypeChange = (event, index, value) => this.setState({ gender: value });
+    handleManagerTypeChange = (event, index, value) => this.setState({ manager: value });
 
     handleLoginSubmit(evt) {
         evt.preventDefault();
@@ -54,10 +49,21 @@ class SignUp extends Component {
         var password = this.refs.password.getValue();
         var name = this.refs.name.getValue();
         var gender = this.state.gender;
-        var address = this.refs.address.getValue();
+        var manager = this.state.manager;
+        // var address = this.refs.address.getValue();
         var cityname = this.state.cityname;
         var cellNumber = this.refs.cellNumber.getValue();
-        var userObj = { email: email, password: password, name: name, gender: gender, address: address, cityname: cityname, cellNumber: cellNumber, isDonor: false };
+        var userObj = { 
+            email: email, 
+            password: password,
+            name: name, 
+            gender: gender, 
+            manager: manager, 
+            // address: address, 
+            cityname: cityname, 
+            cellNumber: cellNumber, 
+            isDonor: false
+        };
         console.log(userObj);
         this.props.signUpRequest(userObj);
     }
@@ -85,7 +91,7 @@ class SignUp extends Component {
                         <p>Already Have account? <Link to="/login">Login</Link></p>
                         <form onSubmit={this.handleSubmit} onChange={this.clearErrors}>
                             <h3>Account Info</h3>
-                            <mat.Divider />
+                            {/* <mat.Divider /> */}
                             <mat.TextField
                                 hintText="test@test.com"
                                 floatingLabelText="Email"
@@ -107,7 +113,6 @@ class SignUp extends Component {
                                 floatingLabelText="Password" />
                             <br />
                             <h3>Personal Info</h3>
-                            <mat.Divider />
                             <mat.TextField
                                 hintText="John Doe"
                                 floatingLabelText="Name"
@@ -145,7 +150,7 @@ class SignUp extends Component {
                                 ref="cityname"
                                 name="cityname"
                                 floatingLabelText="City Name"
-                                onChange={this.handlecitynameChange}
+                                onChange={this.handleCityTypeChange}
                                 value={this.state.cityname}
                                 className="full-width-container"
                                 required={true}
@@ -156,8 +161,20 @@ class SignUp extends Component {
                                     })
                                 }
                             </mat.SelectField>
-                            <br />
-                            <mat.TextField
+                            <mat.SelectField
+                                ref="manager"
+                                name="manager"
+                                floatingLabelText="Manager"
+                                onChange={this.handleManagerTypeChange}
+                                className="full-width-container"
+                                value={this.state.manager}
+                                required={true}
+                            >
+                                <mat.MenuItem value={1} primaryText="Store" />
+                                <mat.MenuItem value={2} primaryText="Warehouse" />
+                            </mat.SelectField>
+                            {/* <br /> */}
+                            {/* <mat.TextField
                                 hintText="MultiLine with rows: 2 and rowsMax: 4"
                                 multiLine={true}
                                 className="full-width-container"
@@ -168,7 +185,8 @@ class SignUp extends Component {
                                 required={true}
                                 type="text"
                                 onChange={this.handleInputChange}
-                            /><br />
+                            />
+                            <br /> */}
                             <mat.RaisedButton type="submit" label="Submit" primary={true} />
                         </form>
                     </mat.CardText>
