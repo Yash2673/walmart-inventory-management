@@ -22,6 +22,7 @@ import ViewAllCrimesContainer from './containers/viewAllCrimes';
 import adminDashboardContainer from './containers/adminContainer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import ViewStore from './containers/loadStores'
 injectTapEventPlugin();
 import * as mat from 'material-ui';
 
@@ -56,6 +57,7 @@ class RootComponent extends Component {
                 <Route path="/viewPurchase" component={LoadPurchaseContainer} />
                 <Route path="/viewProducts" component={LoadProductsContainer} />
                 <Route path="/viewAllCrimes" component={ViewAllCrimesContainer} />
+                <Route path="/viewStores" component={ViewStore} />
               </Route>
               <Route path="/login" component={LoginContainer}>
               </Route>

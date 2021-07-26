@@ -3,9 +3,10 @@ import * as fbConfigs from '../../configs/dbconfigs';
 
 export function loadstoresRequest(loadstoresData) {
     return dispatch => {
-        //dispatch(LoadstoresRequest());
+        dispatch(LoadstoresRequest());
+        console.log(loadstoresData)
         if(loadstoresData){
-            return fbConfigs.database.ref('/Stores').orderByChild('userEmail').equalTo(loadstoresData).once('value', snap => {
+            return fbConfigs.database.ref('/Stores').orderByChild('userEmail').equalTo(loadstoresData.email).once('value', snap => {
                 const todo = [];
                 snap.forEach(childSnapshot => {
                     var innerTodo = childSnapshot.val();
@@ -13,6 +14,7 @@ export function loadstoresRequest(loadstoresData) {
                         todo.push(innerTodo);
                 })
                 dispatch(loadstoresRequestSuccess(todo))
+                console.log(todo)
             });
         }else{
             dispatch(loadstoresRequestFailed())

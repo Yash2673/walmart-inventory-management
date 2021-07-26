@@ -19,6 +19,7 @@ Tasks :
 8. In warehouse & store, Product filter availability check.- askshad
 9. Thinking of ways for Route preparation ( for Warehouses & Stores ) - APIs (maps) or something more. - piyush
 10. UI preparation - ankit
+
 Products - 
 1. Image
 2. Fav(checkbox)
