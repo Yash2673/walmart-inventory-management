@@ -14,12 +14,12 @@ import {
     Link,
     IndexLink
 } from 'react-router';
-
+import logo from './logoss.png';
 class rootContainer extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { open: false, isAdmin:false };
+        this.state = { open: false, isAdmin: false };
     }
 
     handleClose = () => this.setState({ open: false });
@@ -31,19 +31,19 @@ class rootContainer extends Component {
         this.setState({ open: !this.state.open })
         browserHistory.push('/dashboard');
     };
-  
+
 
     gotoAvailable = () => {
         this.setState({ open: !this.state.open })
         browserHistory.push('/addReport');
     };
 
-    gotoAddSales= () => {
+    gotoAddSales = () => {
         this.setState({ open: !this.state.open })
         browserHistory.push('/addSales');
     };
 
-    gotoAddStores= () => {
+    gotoAddStores = () => {
         this.setState({ open: !this.state.open })
         browserHistory.push('/addStore');
     };
@@ -53,7 +53,7 @@ class rootContainer extends Component {
         browserHistory.push('/viewStores');
     };
 
-     gotoComplains = () => {
+    gotoComplains = () => {
         this.setState({ open: !this.state.open })
         browserHistory.push('/myIncidents');
     };
@@ -63,7 +63,7 @@ class rootContainer extends Component {
         browserHistory.push('/viewProducts');
     };
 
-     gotoViewSales = () => {
+    gotoViewSales = () => {
         this.setState({ open: !this.state.open })
         browserHistory.push('/viewSales');
     };
@@ -72,7 +72,7 @@ class rootContainer extends Component {
         this.setState({ open: !this.state.open })
         browserHistory.push('/viewPurchase');
     };
-    
+
     componentDidMount() {
         this.props.loadUserRequest();
     }
@@ -110,33 +110,47 @@ class rootContainer extends Component {
     render() {
         return (
             <div>
-                <mat.AppBar
-                    title="Inventory Management System"
-                    onLeftIconButtonTouchTap={this._handleClick}
+                <div>
+                    < mat.AppBar
+                        title="Inventory Management System"
+                        onLeftIconButtonTouchTap={this._handleClick}
+                        className=""
                     />
-                <mat.Drawer open={this.state.open}
-                    docked={false}
-                    onRequestChange={(open) => this.setState({ open })}>
-                    <mat.MenuItem disabled className="disbaledImage"><img src="http://rig-serv.com/wp-content/uploads/2016/03/inventory-matters-logo-white.png" className="logoImage" /></mat.MenuItem>
-                    <mat.MenuItem onTouchTap={this.gotoDashoard}>Dashboard</mat.MenuItem>
-                    <mat.MenuItem onTouchTap={this.addProduct}>Add Product</mat.MenuItem>
-                    <mat.MenuItem onTouchTap={this.addWarehouse}>Add Warehouse</mat.MenuItem>
-                    <mat.MenuItem onTouchTap={this.gotoDashoard}>View Stores</mat.MenuItem>
-                    <mat.MenuItem onTouchTap={this.gotoWarehouse}>View Warehouse</mat.MenuItem>
-                    <mat.MenuItem onTouchTap={this.gotoViewStores}>View Stores</mat.MenuItem>
 
-                    <mat.MenuItem onTouchTap={this.gotoAddStores}>Add Stores</mat.MenuItem>
-                    <mat.MenuItem onTouchTap={this.gotoViewSales}>View Sales</mat.MenuItem>
-                    <mat.MenuItem onTouchTap={this.gotoAddSales}>Add Sales</mat.MenuItem>
-                    <mat.MenuItem onTouchTap={this.viewPurchase}>View Purchases</mat.MenuItem>
-                    <mat.MenuItem onTouchTap={this.addPurchase}>Add Purchases</mat.MenuItem>
-                    {/*<mat.MenuItem onTouchTap={this.gotoAvailable}>Add Report</mat.MenuItem>
+
+
+                    <mat.Drawer open={this.state.open}
+                        docked={false}
+                        onRequestChange={(open) => this.setState({ open })}
+
+                    >
+
+                        <div className="navbar">
+                            <mat.MenuItem disabled className="disbaledImage"><img src={logo} className="logoImage" /></mat.MenuItem>
+                            <mat.MenuItem onTouchTap={this.gotoDashoard}>Dashboard</mat.MenuItem>
+                            <mat.MenuItem onTouchTap={this.addProduct}>Add Product</mat.MenuItem>
+                            <mat.MenuItem onTouchTap={this.addWarehouse}>Add Warehouse</mat.MenuItem>
+                            <mat.MenuItem onTouchTap={this.gotoDashoard}>View Stores</mat.MenuItem>
+                            <mat.MenuItem onTouchTap={this.gotoWarehouse}>View Warehouse</mat.MenuItem>
+                            <mat.MenuItem onTouchTap={this.gotoViewStores}>View Stores</mat.MenuItem>
+
+                            <mat.MenuItem onTouchTap={this.gotoAddStores}>Add Stores</mat.MenuItem>
+                            <mat.MenuItem onTouchTap={this.gotoViewSales}>View Sales</mat.MenuItem>
+                            <mat.MenuItem onTouchTap={this.gotoAddSales}>Add Sales</mat.MenuItem>
+                            <mat.MenuItem onTouchTap={this.viewPurchase}>View Purchases</mat.MenuItem>
+                            <mat.MenuItem onTouchTap={this.addPurchase}>Add Purchases</mat.MenuItem>
+                            {/*<mat.MenuItem onTouchTap={this.gotoAvailable}>Add Report</mat.MenuItem>
                     <mat.MenuItem onTouchTap={this.gotoComplains}>View My Compalains</mat.MenuItem>
                     <mat.MenuItem onTouchTap={this.gotoViewCrimes}>View Crimes List</mat.MenuItem>*/}
-                    {/*this.state && this.state.isAdmin?<mat.MenuItem onTouchTap={this.gotoAllViewCrimes}>Respond to Crimes</mat.MenuItem>:""*/}
-                    <mat.MenuItem onTouchTap={this.logOutRequest}>Logout</mat.MenuItem>
-                </mat.Drawer>
-                {this.props.children}
+                            {/*this.state && this.state.isAdmin?<mat.MenuItem onTouchTap={this.gotoAllViewCrimes}>Respond to Crimes</mat.MenuItem>:""*/}
+                            <mat.MenuItem onTouchTap={this.logOutRequest}>Logout</mat.MenuItem>
+                        </div>
+
+                    </mat.Drawer>
+
+                    {this.props.children}
+
+                </div >
             </div>
         );
     }
@@ -155,7 +169,7 @@ function mapDispatchToProps(dispatch) {
     return {
 
         logOutRequest: () => dispatch(logOutRequest()),
-        loadUserRequest     : () => dispatch(loadUserRequest())
+        loadUserRequest: () => dispatch(loadUserRequest())
     };
 }
 

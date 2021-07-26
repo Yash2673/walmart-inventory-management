@@ -10,6 +10,7 @@ import {
     IndexLink
 } from 'react-router';
 
+import logo from './logoss.png';
 class SignUp extends Component {
     citiesGroup;
     constructor(props) {
@@ -56,7 +57,7 @@ class SignUp extends Component {
         var address = this.refs.address.getValue();
         var cityname = this.state.cityname;
         var cellNumber = this.refs.cellNumber.getValue();
-        var userObj = { email: email, password: password, name: name, gender: gender, address: address, cityname: cityname, cellNumber: cellNumber, isDonor : false };
+        var userObj = { email: email, password: password, name: name, gender: gender, address: address, cityname: cityname, cellNumber: cellNumber, isDonor: false };
         console.log(userObj);
         this.props.signUpRequest(userObj);
     }
@@ -75,6 +76,9 @@ class SignUp extends Component {
         const { application } = this.props.application;
         return (
             <div className="main-login-div">
+                <div className="logoss">
+                    <img className="Walmartlogo" src={logo} />
+                </div>
                 <mat.Card>
                     <mat.CardTitle title="Sign Up" />
                     <mat.CardText>
@@ -91,7 +95,7 @@ class SignUp extends Component {
                                 required={true}
                                 type="email"
                                 onChange={this.handleInputChange}
-                                /><br />
+                            /><br />
                             <mat.TextField
                                 hintText="password"
                                 ref="password"
@@ -113,7 +117,7 @@ class SignUp extends Component {
                                 required={true}
                                 type="text"
                                 onChange={this.handleInputChange}
-                                /><br />
+                            /><br />
                             <mat.TextField
                                 hintText="1231121234"
                                 floatingLabelText="Cell Number"
@@ -123,7 +127,7 @@ class SignUp extends Component {
                                 required={true}
                                 type="text"
                                 onChange={this.handleInputChange}
-                                /><br />
+                            /><br />
                             <mat.SelectField
                                 ref="gender"
                                 name="gender"
@@ -132,11 +136,11 @@ class SignUp extends Component {
                                 className="full-width-container"
                                 value={this.state.gender}
                                 required={true}
-                                >
+                            >
                                 <mat.MenuItem value={1} primaryText="Male" />
                                 <mat.MenuItem value={2} primaryText="Female" />
                             </mat.SelectField>
-                      
+
                             <mat.SelectField
                                 ref="cityname"
                                 name="cityname"
@@ -145,7 +149,7 @@ class SignUp extends Component {
                                 value={this.state.cityname}
                                 className="full-width-container"
                                 required={true}
-                                >
+                            >
                                 {
                                     this.citiesGroup.map(citiesgroup => {
                                         return <mat.MenuItem key={citiesgroup} value={citiesgroup} primaryText={citiesgroup} />
@@ -164,7 +168,7 @@ class SignUp extends Component {
                                 required={true}
                                 type="text"
                                 onChange={this.handleInputChange}
-                                /><br />
+                            /><br />
                             <mat.RaisedButton type="submit" label="Submit" primary={true} />
                         </form>
                     </mat.CardText>

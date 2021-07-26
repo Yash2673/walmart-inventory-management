@@ -1,12 +1,27 @@
 .main-login-div{
     width: 50%;
     margin: 5% auto;
+    width: 100%;
+   
 }
 
 .full-width-container{
     width: 100% !important;
 }
-
+.logoss{
+    height: 80%;
+    display: flex;
+    align-items: center;
+  
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.Walmartlogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   width: 100px;
+}
 @media only screen and (max-width: 768px) {
     .main-login-div{
         width: 80%;

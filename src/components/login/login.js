@@ -9,6 +9,7 @@ import {
     Link,
     IndexLink
 } from 'react-router';
+import logo from './logoss.png';
 
 class Login extends Component {
 
@@ -30,7 +31,7 @@ class Login extends Component {
             if (this.props.application && this.props.application.user) {
                 browserHistory.push('/dashboard');
             }
-        },5)
+        }, 5)
     }
 
     handleLoginSubmit(evt) {
@@ -62,7 +63,10 @@ class Login extends Component {
         const { application } = this.props.application;
         return (
             <div className="main-login-div">
-                <mat.Card>
+                <div className="logoss" >
+                    <img className="Walmartlogo" src={logo} />
+                </div>
+                <mat.Card >
                     <mat.CardTitle title="Login" />
                     <mat.CardText>
                         <p>Don`t Have account? <Link to="/signup">SignUp</Link></p>
@@ -77,7 +81,7 @@ class Login extends Component {
                                 type="email"
                                 value={this.state.email}
                                 onChange={this.handleInputChange}
-                                /><br />
+                            /><br />
                             <mat.TextField
                                 hintText="password"
                                 ref="password"

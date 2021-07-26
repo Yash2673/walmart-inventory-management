@@ -1,8 +1,22 @@
 .main-login-div{
     width: 30%;
     margin: 10% auto;
+  
 }
-
+.logoss{
+    height: 80%;
+    display: flex;
+    align-items: center;
+  
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.Walmartlogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   width: 100px;
+}
 .full-width-container{
-    width: 100% !important;
+    width: 100%;
 }

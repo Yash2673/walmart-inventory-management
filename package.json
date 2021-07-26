@@ -20,7 +20,8 @@
     "redux": "^3.6.0",
     "redux-logger": "^2.8.1",
     "redux-thunk": "^2.2.0",
-    "regression": "^1.4.0"
+    "regression": "^1.4.0",
+    "sass": "^1.36.0"
   },
   "scripts": {
     "start": "react-scripts start",
