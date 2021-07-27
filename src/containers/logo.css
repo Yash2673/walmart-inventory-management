@@ -8,14 +8,32 @@
     cursor: default !important;
     
 }
-
+.menuitem{
+   width: auto 0 0;
+   margin: 0 0 0 0;
+   
+}
+.menuitem:hover{
+    background-color:rgb(119, 224, 238);
+    color: white;
+}
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    color: white;
+    font-weight: 800;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
 .report-table{
     width: 90%;
 }
 
 .navbar{
     background: rgba( 214, 248, 255, 0.25 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+
 backdrop-filter: blur( 2.0px );
 -webkit-backdrop-filter: blur( 2.0px );
 border-radius: 10px;
@@ -25,6 +43,4 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
     background-color: black;
    
 }
-.mat.Drawer:hover {
-    background-color: #5469d4;
-  }
+

@@ -30,3 +30,9 @@
     width:50%;
     margin: 0px auto;
 }
+.card-ui{
+    margin-top: 40px !important;
+    padding-bottom: 20px !important;
+    padding-top: 20px !important;
+    box-shadow: blackt;
+}

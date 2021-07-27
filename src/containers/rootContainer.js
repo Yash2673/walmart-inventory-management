@@ -15,6 +15,9 @@ import {
     IndexLink
 } from 'react-router';
 import logo from './logoss.png';
+import { collisionVelocity } from 'tsparticles/Utils';
+
+
 class rootContainer extends Component {
 
     constructor(props) {
@@ -119,54 +122,54 @@ class rootContainer extends Component {
     render() {
         const user = JSON.parse(localStorage.getItem("inventoryUserData"));
         return (
-            <div>
-                <div>
-                    <mat.AppBar
-                        title="Prayas Inventory"
+            <div  >
+                <div >
+                    <mat.AppBar position="center"
+
                         onLeftIconButtonTouchTap={this._handleClick}
-                        className=""
-                    />
 
-                    <mat.Drawer open={this.state.open}
-                        docked={false}
-                        onRequestChange={(open) => this.setState({ open })}
+                    ><div className='title'>Prayas Inventory</div></mat.AppBar>
+                    <div >
+                        <mat.Drawer open={this.state.open}
+                            docked={false}
+                            onRequestChange={(open) => this.setState({ open })}
 
-                    >
-                        {
-                            user.manager === "Store" ?
+                        > <div >
+                                {
+                                    user.manager === "Store" ?
 
-                                <div className="navbar">
-                                    <mat.MenuItem disabled className="disbaledImage"><img src={logo} className="logoImage" /></mat.MenuItem>
-                                    <mat.MenuItem onTouchTap={this.gotoDashoard}>Dashboard</mat.MenuItem>
-                                    <mat.MenuItem onTouchTap={this.addProduct}>Add Product</mat.MenuItem>
-                                    <mat.MenuItem onTouchTap={this.gotoAddStores}>Add Stores</mat.MenuItem>
-                                    <mat.MenuItem onTouchTap={this.gotoAddSales}>Add Sales</mat.MenuItem>
-                                    <mat.MenuItem onTouchTap={this.addPurchase}>Add Purchases</mat.MenuItem>
-                                    <mat.MenuItem onTouchTap={this.gotoViewStores}>View Stores</mat.MenuItem>
-                                    <mat.MenuItem onTouchTap={this.gotoViewSales}>View Sales</mat.MenuItem>
-                                    <mat.MenuItem onTouchTap={this.viewPurchase}>View Purchases</mat.MenuItem>
-                                    <mat.MenuItem onTouchTap={this.gotoWarehouses}>View Warehouse</mat.MenuItem>
-                                    <mat.MenuItem onTouchTap={this.logOutRequest}>Logout</mat.MenuItem>
-                                </div>
-                                :
-                                <div className="navbar">
-                                    <mat.MenuItem disabled className="disbaledImage"><img src={logo} className="logoImage" /></mat.MenuItem>
-                                    <mat.MenuItem onTouchTap={this.gotoDashoard}>Dashboard</mat.MenuItem>
-                                    <mat.MenuItem onTouchTap={this.addWarehouse}>Add Warehouse</mat.MenuItem>
-                                    <mat.MenuItem onTouchTap={this.logOutRequest}>Logout</mat.MenuItem>
-                                    {/*<mat.MenuItem onTouchTap={this.gotoAvailable}>Add Report</mat.MenuItem>
+                                        <div className="navbar">
+                                            <mat.MenuItem disabled className="disbaledImage"><img src={logo} className="logoImage" /></mat.MenuItem>
+                                            <div className='menuitem'> <mat.MenuItem onTouchTap={this.gotoDashoard}>Dashboard</mat.MenuItem></div>
+                                            <div className='menuitem'> <mat.MenuItem onTouchTap={this.addProduct}>Add Product</mat.MenuItem></div>
+                                            <div className='menuitem'>  <mat.MenuItem onTouchTap={this.gotoAddStores}>Add Stores</mat.MenuItem></div>
+                                            <div className='menuitem'>  <mat.MenuItem onTouchTap={this.gotoAddSales}>Add Sales</mat.MenuItem></div>
+                                            <div className='menuitem'> <mat.MenuItem onTouchTap={this.addPurchase}>Add Purchases</mat.MenuItem></div>
+                                            <div className='menuitem'> <mat.MenuItem onTouchTap={this.gotoViewStores}>View Stores</mat.MenuItem></div>
+                                            <div className='menuitem'> <mat.MenuItem onTouchTap={this.gotoViewSales}>View Sales</mat.MenuItem></div>
+                                            <div className='menuitem'>  <mat.MenuItem onTouchTap={this.viewPurchase}>View Purchases</mat.MenuItem></div>
+                                            <div className='menuitem'>  <mat.MenuItem onTouchTap={this.gotoWarehouses}>View Warehouse</mat.MenuItem></div>
+                                            <div className='menuitem'> <mat.MenuItem onTouchTap={this.logOutRequest}>Logout</mat.MenuItem></div>
+                                        </div>
+                                        :
+                                        <div className="navbar">
+                                            <mat.MenuItem disabled className="disbaledImage"><img src={logo} className="logoImage" /></mat.MenuItem>
+                                            <div className='menuitem'> <mat.MenuItem onTouchTap={this.gotoDashoard}>Dashboard</mat.MenuItem></div>
+                                            <div className='menuitem'> <mat.MenuItem onTouchTap={this.addWarehouse}>Add Warehouse</mat.MenuItem></div>
+                                            <div className='menuitem'> <mat.MenuItem onTouchTap={this.logOutRequest}>Logout</mat.MenuItem></div>
+                                            {/*<mat.MenuItem onTouchTap={this.gotoAvailable}>Add Report</mat.MenuItem>
                                     <mat.MenuItem onTouchTap={this.gotoComplains}>View My Compalains</mat.MenuItem>
                                     <mat.MenuItem onTouchTap={this.gotoViewCrimes}>View Crimes List</mat.MenuItem>*/}
-                                    {/*this.state && this.state.isAdmin?<mat.MenuItem onTouchTap={this.gotoAllViewCrimes}>Respond to Crimes</mat.MenuItem>:""*/}
-                                </div>
-                        }
-
-                    </mat.Drawer>
-
+                                            {/*this.state && this.state.isAdmin?<mat.MenuItem onTouchTap={this.gotoAllViewCrimes}>Respond to Crimes</mat.MenuItem>:""*/}
+                                        </div>
+                                }
+                            </div>
+                        </mat.Drawer>
+                    </div>
                     {this.props.children}
 
                 </div>
-            </div>
+            </div >
         );
     }
 }

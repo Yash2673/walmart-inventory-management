@@ -21,7 +21,7 @@ class SignUp extends Component {
             "Kolkata",
             "Mumbai"
         ]
-        this.state = { email: '', password: '', name: '', gender: 1, address: '', cityname: "",manager: "" };
+        this.state = { email: '', password: '', name: '', gender: 1, address: '', cityname: "", manager: "" };
         this.handleSubmit = this.handleLoginSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
     }
@@ -53,15 +53,15 @@ class SignUp extends Component {
         // var address = this.refs.address.getValue();
         var cityname = this.state.cityname;
         var cellNumber = this.refs.cellNumber.getValue();
-        var userObj = { 
-            email: email, 
+        var userObj = {
+            email: email,
             password: password,
-            name: name, 
-            gender: gender, 
-            manager: manager, 
+            name: name,
+            gender: gender,
+            manager: manager,
             // address: address, 
-            cityname: cityname, 
-            cellNumber: cellNumber, 
+            cityname: cityname,
+            cellNumber: cellNumber,
             isDonor: false
         };
         console.log(userObj);

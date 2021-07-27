@@ -206,8 +206,8 @@ class LoadProducts extends Component {
                                 {application.map((todo, index) => {
                                     if (that.testtype(todo.availability, todo.quantity)) {
                                         return (
-                                            <mat.TableRow key={index} selectable={false}>
-                                                <mat.TableRowColumn>{index + 1}</mat.TableRowColumn>
+                                            <mat.TableRow className='card-ui' key={index} selectable={false}>
+
                                                 <mat.TableRowColumn>{todo.productName}</mat.TableRowColumn>
                                                 <mat.TableRowColumn>{todo.manufacturer}</mat.TableRowColumn>
                                                 <mat.TableRowColumn>{todo.availability ? "True" : "Out Of Stock"}</mat.TableRowColumn>
@@ -223,7 +223,9 @@ class LoadProducts extends Component {
                                                     {/* <mat.RaisedButton type="button" label="Update" primary={true} onClick={() => this.handleRequiredRequest(todo.key)} /> */}
                                                 </mat.TableRowColumn>
                                                 <mat.TableRowColumn></mat.TableRowColumn>
+
                                             </mat.TableRow>
+
                                         );
                                     }
                                 })}
@@ -231,7 +233,7 @@ class LoadProducts extends Component {
                         </mat.Table>
                         : null}
                 </mat.Paper>
-            </div>
+            </div >
         );
     }
 }

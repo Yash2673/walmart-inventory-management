@@ -23,10 +23,10 @@ class AddStore extends Component {
         var storeName = this.refs.storeName.getValue();
         var storeDescription = this.refs.storeDescription.getValue();
         var objectToSave = {
-            uid : this.props.application.user.uid,
-            userEmail : this.props.application.user.email,
-            storeName : storeName,
-            storeDescription : storeDescription
+            uid: this.props.application.user.uid,
+            userEmail: this.props.application.user.email,
+            storeName: storeName,
+            storeDescription: storeDescription
         }
         this.props.addStoreRequest(objectToSave);
     }
@@ -50,7 +50,7 @@ class AddStore extends Component {
                                 required={true}
                                 type="text"
                                 onChange={this.handleInputChange}
-                                /><br />
+                            /><br />
                             <mat.TextField
                                 hintText="Store Description"
                                 floatingLabelText="Store Description"
@@ -63,7 +63,7 @@ class AddStore extends Component {
                                 required={true}
                                 type="text"
                                 onChange={this.handleInputChange}
-                                /><br />
+                            /><br />
                             <mat.RaisedButton type="submit" label="Submit" primary={true} />
                         </form>
                     </mat.CardText>

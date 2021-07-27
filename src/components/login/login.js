@@ -66,7 +66,7 @@ class Login extends Component {
                 <div className="logoss" >
                     <img className="Walmartlogo" src={logo} />
                 </div>
-                <mat.Card >
+                <mat.Card className='login-grid'>
                     <mat.CardTitle title="Login" />
                     <mat.CardText>
                         <p>Don`t Have account? <Link to="/signup">SignUp</Link></p>

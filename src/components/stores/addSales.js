@@ -35,7 +35,7 @@ class AddSale extends Component {
         }, 10)
     }
     componentDidUpdate(prevProps) {
-        if(JSON.stringify(prevProps.application) !== JSON.stringify(this.props.application)){
+        if (JSON.stringify(prevProps.application) !== JSON.stringify(this.props.application)) {
             this.props.loadstoresRequest(this.props.application.user.email);
             this.props.loadProductsRequest(this.props.application.user)
         }
@@ -77,7 +77,7 @@ class AddSale extends Component {
         return (
             <div className="main-login-div">
                 <mat.Card>
-                    <mat.CardTitle title="Add New Store" />
+                    <mat.CardTitle title="Add SALES" />
                     <mat.CardText>
                         <form onSubmit={this.handleSubmit} onChange={this.clearErrors}>
                             <h3>Sales Info</h3>
@@ -129,11 +129,11 @@ class AddSale extends Component {
                                 onChange={this.handleChange}
                                 className="full-width-container"
                             >
-                                {application && application.length > 0 ?
+                                {/*application && application.length > 0 ?
                                     application.map((data, index) => {
                                         return <mat.MenuItem key={index} value={data} primaryText={data.storeName} />
                                     })
-                                    : ""}
+                                : ""*/}
                             </mat.SelectField>
                             <br />
                             <mat.RaisedButton type="submit" label="Submit" primary={true} />
